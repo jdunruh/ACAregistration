@@ -1,0 +1,49 @@
+<%= form_for(@race) do |f| %>
+  <% if @race.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@race.errors.count, "error") %> prohibited this race from being saved:</h2>
+
+      <ul>
+      <% @race.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :women? %><br />
+    <%= f.check_box :women? %>
+  </div>
+  <div class="field">
+    <%= f.label :min_age %><br />
+    <%= f.number_field :min_age %>
+  </div>
+  <div class="field">
+    <%= f.label :max_age %><br />
+    <%= f.number_field :max_age %>
+  </div>
+  <div class="field">
+    <%= f.label :entry_fee %><br />
+    <%= f.text_field :entry_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :min_category %><br />
+    <%= f.number_field :min_category %>
+  </div>
+  <div class="field">
+    <%= f.label :max_category %><br />
+    <%= f.number_field :max_category %>
+  </div>
+  <div class="field">
+    <%= f.label :age_class? %><br />
+    <%= f.check_box :age_class? %>
+  </div>
+  <div class="field">
+    <%= f.label :all_categories? %><br />
+    <%= f.check_box :all_categories? %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

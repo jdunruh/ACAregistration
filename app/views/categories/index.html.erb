@@ -1,0 +1,33 @@
+<h1>Listing categories</h1>
+
+<table>
+  <tr>
+    <th>Cat name</th>
+    <th>Cat number</th>
+    <th>Cat lower age</th>
+    <th>Cat upper age</th>
+    <th>Cat age based</th>
+    <th>Cat upper age control</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.cat_name %></td>
+    <td><%= category.cat_number %></td>
+    <td><%= category.cat_lower_age %></td>
+    <td><%= category.cat_upper_age %></td>
+    <td><%= category.cat_age_based %></td>
+    <td><%= category.cat_upper_age_control %></td>
+    <td><%= link_to 'Show', category %></td>
+    <td><%= link_to 'Edit', edit_category_path(category) %></td>
+    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category', new_category_path %>

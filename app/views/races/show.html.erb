@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Women?:</b>
+  <%= @race.women? %>
+</p>
+
+<p>
+  <b>Min age:</b>
+  <%= @race.min_age %>
+</p>
+
+<p>
+  <b>Max age:</b>
+  <%= @race.max_age %>
+</p>
+
+<p>
+  <b>Entry fee:</b>
+  <%= @race.entry_fee %>
+</p>
+
+<p>
+  <b>Min category:</b>
+  <%= @race.min_category %>
+</p>
+
+<p>
+  <b>Max category:</b>
+  <%= @race.max_category %>
+</p>
+
+<p>
+  <b>Age class?:</b>
+  <%= @race.age_class? %>
+</p>
+
+<p>
+  <b>All categories?:</b>
+  <%= @race.all_categories? %>
+</p>
+
+
+<%= link_to 'Edit', edit_race_path(@race) %> |
+<%= link_to 'Back', races_path %>

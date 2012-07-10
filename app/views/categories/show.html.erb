@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cat name:</b>
+  <%= @category.cat_name %>
+</p>
+
+<p>
+  <b>Cat number:</b>
+  <%= @category.cat_number %>
+</p>
+
+<p>
+  <b>Cat lower age:</b>
+  <%= @category.cat_lower_age %>
+</p>
+
+<p>
+  <b>Cat upper age:</b>
+  <%= @category.cat_upper_age %>
+</p>
+
+<p>
+  <b>Cat age based:</b>
+  <%= @category.cat_age_based %>
+</p>
+
+<p>
+  <b>Cat upper age control:</b>
+  <%= @category.cat_upper_age_control %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

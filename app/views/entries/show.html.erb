@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Race:</b>
+  <%= @entry.race_id %>
+</p>
+
+<p>
+  <b>Rider:</b>
+  <%= @entry.rider_id %>
+</p>
+
+<p>
+  <b>Signed release?:</b>
+  <%= @entry.signed_release? %>
+</p>
+
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
