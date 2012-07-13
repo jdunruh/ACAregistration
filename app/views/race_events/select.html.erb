@@ -1,0 +1,6 @@
+<h2>Select an Event</h2>
+<%= form_tag("/race_events/selection") %>
+<% @race_events.each do |r| %>
+    <%= radio_button_tag :race_event, r.id %> <%= r.name %><br>
+<% end %>
+<%= submit_tag "Select" %>

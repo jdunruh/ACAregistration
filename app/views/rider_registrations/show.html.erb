@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Rider:</b>
+  <%= @rider_registration.rider_id %>
+</p>
+
+<p>
+  <b>Entry:</b>
+  <%= @rider_registration.entry_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_rider_registration_path(@rider_registration) %> |
+<%= link_to 'Back', rider_registrations_path %>

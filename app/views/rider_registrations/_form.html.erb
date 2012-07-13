@@ -1,0 +1,12 @@
+<%= simple_form_for(@rider_registration) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :rider_id %>
+    <%= f.input :entry_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
-<h1>Listing race_events</h1>
+<h1>Choose an Event</h1>
 
 <table>
   <tr>
@@ -12,9 +12,9 @@
 
 <% @race_events.each do |race_event| %>
   <tr>
-    <td><%= race_event.name %></td>
+    <td><%= link_to race_event.name %></td>
     <td><%= race_event.date %></td>
-    <td><%= race_event.race_type_id %></td>
+    <td><%= race_event.race_type.race_type %></td>
     <td><%= link_to 'Show', race_event %></td>
     <td><%= link_to 'Edit', edit_race_event_path(race_event) %></td>
     <td><%= link_to 'Destroy', race_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

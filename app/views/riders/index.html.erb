@@ -1,49 +1,6 @@
-<h1>Listing riders</h1>
+<h1>Choose Rider</h1>
 
-<table>
-  <tr>
-    <th>License number</th>
-    <th>Citizen</th>
-    <th>Sex</th>
-    <th>State</th>
-    <th>Racing age</th>
-    <th>Rd cat</th>
-    <th>Cx cat</th>
-    <th>Dh cat</th>
-    <th>Mx ds cat</th>
-    <th>Ot cat</th>
-    <th>Rd club</th>
-    <th>Tk club</th>
-    <th>Cx club</th>
-    <th>Birthdate</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @riders.each do |rider| %>
-  <tr>
-    <td><%= rider.license_number %></td>
-    <td><%= rider.citizen %></td>
-    <td><%= rider.sex %></td>
-    <td><%= rider.state %></td>
-    <td><%= rider.racing_age %></td>
-    <td><%= rider.rd_cat %></td>
-    <td><%= rider.cx_cat %></td>
-    <td><%= rider.dh_cat %></td>
-    <td><%= rider.mx_ds_cat %></td>
-    <td><%= rider.ot_cat %></td>
-    <td><%= rider.rd_club %></td>
-    <td><%= rider.tk_club %></td>
-    <td><%= rider.cx_club %></td>
-    <td><%= rider.birthdate %></td>
-    <td><%= link_to 'Show', rider %></td>
-    <td><%= link_to 'Edit', edit_rider_path(rider) %></td>
-    <td><%= link_to 'Destroy', rider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
+<%= simple_fields_for  %>
 <br />
 
 <%= link_to 'New Rider', new_rider_path %>

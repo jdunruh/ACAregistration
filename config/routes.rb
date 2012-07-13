@@ -1,11 +1,16 @@
 ACAregistration::Application.routes.draw do
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
-
-  resources :entries
+  match "/race_events/select" => "race_events#select"
+  match "/race_events/selection" => "race_events#selection"
 
   resources :race_events
+    resources :riders
+    resources :rider_registrations
+      resources :entries
+
 
   resources :race_types
 
@@ -65,7 +70,7 @@ ACAregistration::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
+  # You can have the root of your site routed with root
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 
