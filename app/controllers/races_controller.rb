@@ -80,4 +80,10 @@ class RacesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def find
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
 end

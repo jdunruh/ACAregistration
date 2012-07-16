@@ -80,4 +80,10 @@ class RidersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def find
+    respond_to do |format|
+      format.html # find.html.erb
+    end
+  end
 end

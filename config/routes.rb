@@ -5,11 +5,12 @@ ACAregistration::Application.routes.draw do
   devise_for :users
   match "/race_events/select" => "race_events#select"
   match "/race_events/selection" => "race_events#selection"
+  match "/rider_registrations/new_rider" => "rider_registrations#new_rider"
 
   resources :race_events
-    resources :riders
-    resources :rider_registrations
-      resources :entries
+  resources :riders
+  resources :rider_registrations
+  resources :entries
 
 
   resources :race_types

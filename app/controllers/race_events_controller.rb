@@ -80,4 +80,18 @@ class RaceEventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def select
+    @race_events = RaceEvent.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @race_events }
+    end
+  end
+
+  def selection
+    session[:race_event] = params[:race_event]
+    redirect_to new_rider_registration_path
+  end
 end

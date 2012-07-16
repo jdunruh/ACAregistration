@@ -25,6 +25,7 @@ class RiderRegistrationsController < ApplicationController
   # GET /rider_registrations/new.json
   def new
     @rider_registration = RiderRegistration.new
+    @races = races.find(where race_event_id = session[:race_event])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -80,4 +81,16 @@ class RiderRegistrationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_rider
+     @rider_registration = RiderRegistration.new
+     @races = Race.where("race_event_id = ?", session[:race_event])
+     @rider = Rider.where("license_number = ?", params[:license_number])
+
+     respond_to do |format|
+       format.html # new.html.erb
+       format.json { render json: @rider_registration }
+     end
+   end
+
 end
