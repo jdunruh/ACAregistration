@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711025055) do
-
-  create_table "categories", :force => true do |t|
-    t.string   "cat_name"
-    t.integer  "cat_number"
-    t.integer  "cat_lower_age"
-    t.integer  "cat_upper_age"
-    t.boolean  "cat_age_based"
-    t.boolean  "cat_upper_age_control"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-  end
+ActiveRecord::Schema.define(:version => 20120718202643) do
 
   create_table "entries", :force => true do |t|
     t.integer  "race_id"
@@ -99,6 +88,8 @@ ActiveRecord::Schema.define(:version => 20120711025055) do
     t.date     "birthdate"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "first"
+    t.string   "last"
   end
 
   create_table "users", :force => true do |t|
