@@ -1,9 +1,9 @@
 <h1>New rider_registration</h1>
 
-<p> Registering  license number <%= @rider.license_number %>  </p>
+<p> Registering  <%= @rider[:first] %> &nbsp; <%= @rider[:last] %>  <%= @rider[:license_number] %> </p>
 
 <%= simple_form_for @rider_registration do |f| %>
-    f.collection :race, :collection => @race, :as => :check_boxes
+    <%=  f.association :races, :collection => @races, :as => :check_boxes %>
 <% end %>
 
 <%= link_to 'Back', rider_registrations_path %>
