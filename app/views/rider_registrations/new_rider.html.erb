@@ -2,9 +2,9 @@
 
 <p> Registering  <%= @rider[:first] %> &nbsp; <%= @rider[:last] %>  <%= @rider[:license_number] %> </p>
 
-<%= simple_form_for @rider_registration do |f| %>
-    <%=  f.association :races, :collection => @races, :as => :check_boxes %>
+<%= simple_form_for :races, :url => "/rider_registrations", :method => :post do |f| %>
+    <%=  f.input :name, :collection => @races, :as => :check_boxes %>
+    <%= f.submit "Register" %>
 <% end %>
 
-<%= link_to 'Back', rider_registrations_path %>
                                                                                                                                                   r

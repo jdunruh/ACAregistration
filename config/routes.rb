@@ -3,10 +3,10 @@ ACAregistration::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
-  match "/race_events/select" => "race_events#select", :via => :post
+  match "/race_events/select" => "race_events#select"
   match "/race_events/selection" => "race_events#selection"
   match "/rider_registrations/new_rider" => "rider_registrations#new_rider" , :as => :register_rider
-  match "/rider_registrations/find" => "rider_registrations#find"
+  match "/riders/find" => "rider_registrations#find"
 
   resources :race_events
   resources :riders

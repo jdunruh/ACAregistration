@@ -92,6 +92,6 @@ class RaceEventsController < ApplicationController
 
   def selection
     session[:race_event] = params[:race_event]
-    redirect_to new_rider_registration_path
+    redirect_to find_riders_path
   end
 end

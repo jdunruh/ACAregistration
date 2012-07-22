@@ -25,7 +25,7 @@ class RiderRegistrationsController < ApplicationController
   # GET /rider_registrations/new.json
   def new
     @rider_registration = RiderRegistration.new
-    @races = Race.where(race_event_id = session[:race_event])
+    @races = Race.where("race_event_id = ?", session[:race_event])[0]
 
     respond_to do |format|
       format.html # new.html.erb
