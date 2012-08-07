@@ -81,9 +81,50 @@ class RidersController < ApplicationController
     end
   end
 
-  def find
+  def upload_file
     respond_to do |format|
-      format.html # find.html.erb
+      format.html
+      format.json { head :no_content }
     end
   end
+
+
+  def upload
+    Rider.delete_all # clear existing contents
+    # raise params[:rider_database][:file].tempfile.inspect
+    n=0
+    CSV.foreach(params[:rider_database][:file].tempfile, :headers => true)  do |row|
+      c=Rider.new
+      c.suspended = row["suspended"] ? false : true
+      c.license_number = row["license#"].to_i
+      c.last_name  = row["last name"]
+      c.first_name = row["first name"]
+      c.city = row["city"]
+      c.state = row["state"]
+      c.female = row["gender"] == "F" ? true : false
+      c.racing_age = row["racing age"]
+      c.exp_date = row["exp date"]
+      c.rd_club = row["Rdclub"]
+      c.rd_team = row["Rdteam"]
+      c.track_club = row["Trackcub"]
+      c.track_team = row["Trackteam"]
+      c.cx_club = row["Cxclub"]
+      c.cx_team = row["Cxteam"]
+      c.intl_team = row["IntlTeam"]
+      c.ncca_club = row["NCCA Club"]
+      c.road_cat = row["Road Cat"].to_i
+      c.track_cat = row["TrackCat"].to_i
+      c.cross_cat = row["Cross Cat"].to_i
+      c.birthdate = row["birthdate"]
+      c.citizen = row["citizen"] == "Y" ? true : false
+      c.emergency_contact = row["emergency contact"]
+      c.e_contact_phone = row["e-contact phone"]
+      if c.save
+         n=n+1
+         GC.start if n%50==0
+      end
+    end
+    flash.now[:message]="CSV Import Successful,  #{n} new records added to data base"
+  end
 end
+

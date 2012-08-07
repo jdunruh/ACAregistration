@@ -1,73 +1,34 @@
-<%= form_for(@rider) do |f| %>
-  <% if @rider.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@rider.errors.count, "error") %> prohibited this rider from being saved:</h2>
+<%= simple_form_for(@rider) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @rider.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :suspended %>
+    <%= f.input :license_number %>
+    <%= f.input :last_name %>
+    <%= f.input :first_name %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :female %>
+    <%= f.input :racing_age %>
+    <%= f.input :exp_date %>
+    <%= f.input :rd_club %>
+    <%= f.input :rd_team %>
+    <%= f.input :track_club %>
+    <%= f.input :track_team %>
+    <%= f.input :cx_club %>
+    <%= f.input :cx_team %>
+    <%= f.input :intl_team %>
+    <%= f.input :ncca_club %>
+    <%= f.input :road_cat %>
+    <%= f.input :track_cat %>
+    <%= f.input :cross_cat %>
+    <%= f.input :birthdate %>
+    <%= f.input :citizen %>
+    <%= f.input :emergency_contact %>
+    <%= f.input :e-contact_phone %>
+  </div>
 
-  <div class="field">
-    <%= f.label :license_number %><br />
-    <%= f.text_field :license_number %>
-  </div>
-  <div class="field">
-    <%= f.label :citizen %><br />
-    <%= f.check_box :citizen %>
-  </div>
-  <div class="field">
-    <%= f.label :sex %><br />
-    <%= f.text_field :sex %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :racing_age %><br />
-    <%= f.number_field :racing_age %>
-  </div>
-  <div class="field">
-    <%= f.label :rd_cat %><br />
-    <%= f.number_field :rd_cat %>
-  </div>
-  <div class="field">
-    <%= f.label :cx_cat %><br />
-    <%= f.number_field :cx_cat %>
-  </div>
-  <div class="field">
-    <%= f.label :dh_cat %><br />
-    <%= f.number_field :dh_cat %>
-  </div>
-  <div class="field">
-    <%= f.label :mx_ds_cat %><br />
-    <%= f.number_field :mx_ds_cat %>
-  </div>
-  <div class="field">
-    <%= f.label :ot_cat %><br />
-    <%= f.number_field :ot_cat %>
-  </div>
-  <div class="field">
-    <%= f.label :rd_club %><br />
-    <%= f.text_field :rd_club %>
-  </div>
-  <div class="field">
-    <%= f.label :tk_club %><br />
-    <%= f.text_field :tk_club %>
-  </div>
-  <div class="field">
-    <%= f.label :cx_club %><br />
-    <%= f.text_field :cx_club %>
-  </div>
-  <div class="field">
-    <%= f.label :birthdate %><br />
-    <%= f.date_select :birthdate %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

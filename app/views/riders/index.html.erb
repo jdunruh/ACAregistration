@@ -1,6 +1,69 @@
-<h1>Choose Rider</h1>
+<h1>Listing riders</h1>
 
-<%= simple_fields_for  %>
+<table>
+  <tr>
+    <th>Suspended</th>
+    <th>License number</th>
+    <th>Last name</th>
+    <th>First name</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Female</th>
+    <th>Racing age</th>
+    <th>Exp date</th>
+    <th>Rd club</th>
+    <th>Rd team</th>
+    <th>Track club</th>
+    <th>Track team</th>
+    <th>Cx club</th>
+    <th>Cx team</th>
+    <th>Intl team</th>
+    <th>Ncca club</th>
+    <th>Road cat</th>
+    <th>Track cat</th>
+    <th>Cross cat</th>
+    <th>Birthdate</th>
+    <th>Citizen</th>
+    <th>Emergency contact</th>
+    <th>E-contact phone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @riders.each do |rider| %>
+  <tr>
+    <td><%= rider.suspended %></td>
+    <td><%= rider.license_number %></td>
+    <td><%= rider.last_name %></td>
+    <td><%= rider.first_name %></td>
+    <td><%= rider.city %></td>
+    <td><%= rider.state %></td>
+    <td><%= rider.female %></td>
+    <td><%= rider.racing_age %></td>
+    <td><%= rider.exp_date %></td>
+    <td><%= rider.rd_club %></td>
+    <td><%= rider.rd_team %></td>
+    <td><%= rider.track_club %></td>
+    <td><%= rider.track_team %></td>
+    <td><%= rider.cx_club %></td>
+    <td><%= rider.cx_team %></td>
+    <td><%= rider.intl_team %></td>
+    <td><%= rider.ncca_club %></td>
+    <td><%= rider.road_cat %></td>
+    <td><%= rider.track_cat %></td>
+    <td><%= rider.cross_cat %></td>
+    <td><%= rider.birthdate %></td>
+    <td><%= rider.citizen %></td>
+    <td><%= rider.emergency_contact %></td>
+    <td><%= rider.e-contact_phone %></td>
+    <td><%= link_to 'Show', rider %></td>
+    <td><%= link_to 'Edit', edit_rider_path(rider) %></td>
+    <td><%= link_to 'Destroy', rider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
 <br />
 
 <%= link_to 'New Rider', new_rider_path %>

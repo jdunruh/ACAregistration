@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718202643) do
+ActiveRecord::Schema.define(:version => 20120803023703) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "cat_name"
+    t.integer  "cat_number"
+    t.integer  "cat_lower_age"
+    t.integer  "cat_upper_age"
+    t.boolean  "cat_age_based"
+    t.boolean  "cat_upper_age_control"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "entries", :force => true do |t|
     t.integer  "race_id"
@@ -72,24 +83,32 @@ ActiveRecord::Schema.define(:version => 20120718202643) do
   end
 
   create_table "riders", :force => true do |t|
-    t.string   "license_number"
-    t.boolean  "citizen"
-    t.string   "sex"
+    t.boolean  "suspended"
+    t.integer  "license_number"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "city"
     t.string   "state"
+    t.boolean  "female"
     t.integer  "racing_age"
-    t.integer  "rd_cat"
-    t.integer  "cx_cat"
-    t.integer  "dh_cat"
-    t.integer  "mx_ds_cat"
-    t.integer  "ot_cat"
+    t.date     "exp_date"
     t.string   "rd_club"
-    t.string   "tk_club"
+    t.string   "rd_team"
+    t.string   "track_club"
+    t.string   "track_team"
     t.string   "cx_club"
+    t.string   "cx_team"
+    t.string   "intl_team"
+    t.string   "ncca_club"
+    t.integer  "road_cat"
+    t.integer  "track_cat"
+    t.integer  "cross_cat"
     t.date     "birthdate"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "first"
-    t.string   "last"
+    t.boolean  "citizen"
+    t.string   "emergency_contact"
+    t.string   "e_contact_phone"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "users", :force => true do |t|

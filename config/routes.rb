@@ -7,6 +7,8 @@ ACAregistration::Application.routes.draw do
   match "/race_events/selection" => "race_events#selection"
   match "/rider_registrations/new_rider" => "rider_registrations#new_rider" , :as => :register_rider
   match "/riders/find" => "rider_registrations#find"
+  match "/riders/upload_file" => "riders#upload_file"
+  match "/riders/upload" => "riders#upload"
 
   resources :race_events
   resources :riders
@@ -16,7 +18,7 @@ ACAregistration::Application.routes.draw do
 
   resources :race_types
 
-  resources :riders
+  resources :old_riders
 
   resources :categories
 

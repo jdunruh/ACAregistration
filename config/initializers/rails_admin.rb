@@ -31,10 +31,10 @@ RailsAdmin.config do |config|
 
   #  ==> Included models
   # Add all excluded models here:
-  # config.excluded_models = [Category, Entry, Race, RaceEvent, RaceType, Rider]
+  # config.excluded_models = [Category, Entry, Race, RaceEvent, RaceType, OldRider]
 
   # Add models here if you want to go 'whitelist mode':
-  # config.included_models = [Category, Entry, Race, RaceEvent, RaceType, Rider]
+  # config.included_models = [Category, Entry, Race, RaceEvent, RaceType, OldRider]
 
   # Application wide tried label methods for models' instances
   # config.label_methods << :description # Default is [:name, :title]
@@ -165,7 +165,7 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
-  # config.model Rider do
+  # config.model OldRider do
   #   # Found associations:
   #   # Found columns:
   #     configure :id, :integer 
