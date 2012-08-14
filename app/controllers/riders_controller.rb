@@ -119,12 +119,53 @@ class RidersController < ApplicationController
       c.citizen = row["citizen"] == "Y" ? true : false
       c.emergency_contact = row["emergency contact"]
       c.e_contact_phone = row["e-contact phone"]
+      c.oneday = false
       if c.save
          n=n+1
          GC.start if n%50==0
       end
     end
     flash.now[:message]="CSV Import Successful,  #{n} new records added to data base"
+  end
+
+  def new_one_day
+    @rider = Rider.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @rider }
+    end
+  end
+
+  def create_one_day
+    @rider = Rider.new(params[:rider])
+    @rider.suspended = false
+    @rider.license_number = 0
+    @rider.exp_date = Date.today
+    @rider.rd_club = "Unattached"
+    @rider.rd_team = "Unattached"
+    @rider.track_club = "Unattached"
+    @rider.track_team = "Unattached"
+    @rider.cx_club = "Unattached"
+    @rider.cx_team = "Unattached"
+    @rider.intl_team = "Unattached"
+    @rider.ncca_club = "Unattached"
+    @rider.road_cat = 5
+    @rider.track_cat = 4
+    @rider.cross_cat = 4
+    @rider.oneday = true
+
+
+    respond_to do |format|
+      if @rider.save
+        format.html { redirect_to @rider, notice: 'Rider was successfully created.' }
+        format.json { render json: @rider, status: :created, location: @rider }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @rider.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 end
 

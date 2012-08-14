@@ -6,9 +6,10 @@ ACAregistration::Application.routes.draw do
   match "/race_events/select" => "race_events#select"
   match "/race_events/selection" => "race_events#selection"
   match "/rider_registrations/new_rider" => "rider_registrations#new_rider" , :as => :register_rider
-  match "/riders/find" => "rider_registrations#find"
+  match "/riders/find" => "rider_registrations#find", :as => :find_riders
   match "/riders/upload_file" => "riders#upload_file"
   match "/riders/upload" => "riders#upload"
+  match "riders/new_one_day" => "riders#new_one_day", :as => :new_one_day_rider
 
   resources :race_events
   resources :riders
@@ -24,7 +25,7 @@ ACAregistration::Application.routes.draw do
 
   resources :races
 
-  root :to => "home#index"
+  root :to => "race_events#select"
 
 
   # The priority is based upon order of creation:

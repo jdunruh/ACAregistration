@@ -1,0 +1,23 @@
+<h1>New One Day License</h1>
+
+<%= simple_form_for(@rider), :url => { :action => "create_one_day" } do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :last_name %>
+    <%= f.input :first_name %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :female %>
+    <%= f.input :birthdate %>
+    <%= f.input :citizen %>
+    <%= f.input :emergency_contact %>
+    <%= f.input :e_contact_phone %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', riders_path %>
