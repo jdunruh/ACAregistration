@@ -1,4 +1,7 @@
 class RiderRegistrationsController < ApplicationController
+
+  before_filter :check_race_event_selected
+
   # GET /rider_registrations
   # GET /rider_registrations.json
   def index
@@ -93,5 +96,40 @@ class RiderRegistrationsController < ApplicationController
        format.json { render json: @rider_registration }
      end
    end
+
+  def new_rider_by_name
+     @rider_registration = RiderRegistration.new
+     @races = Race.where("race_event_id = ?", session[:race_event])
+     if params["last_name"].length > 0
+       if params["first_name"].length == 0
+         @rider = Rider.where("last_name = ?", params[:last_name])
+       else
+         @rider = Rider.where("last_name = ? and first_name = ?", params[:last_name], params[:first_name])
+       end
+     else
+       flash[:notice] = "Must supply last name for search"
+       @rider = []
+     end
+
+     if @rider.length > 1
+       respond_to do |format|
+         format.html
+         format.json { render json: @rider_registration }
+       end
+     elsif @rider.length == 1
+       @rider = @rider[0]
+       respond_to do |format|
+         format.html { render "new_rider.html.erb" }
+         format.json { render json: @rider_registration }
+       end
+     else
+       render :find
+     end
+  end
+
+  protected
+  def check_race_event_selected
+    redirect_to "/race_events/select" unless session[:race_event]
+  end
 
 end

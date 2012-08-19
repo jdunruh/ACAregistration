@@ -3,7 +3,7 @@
 <%= text_field_tag :license_number %> <br>
 <%= button_tag "Find by License Number" %>
 <% end %>
-<%= form_tag("rider_registrations/new_rider_by_name") do %>
+<%= form_tag("/rider_registrations/new_rider_by_name", :method => "Post") do %>
     <%= text_field_tag :first_name %> &nbsp &nbsp <%= text_field_tag :last_name %> <br>
     <%= button_tag "Find by Name" %>
 <% end %>

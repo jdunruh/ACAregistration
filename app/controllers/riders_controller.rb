@@ -150,7 +150,7 @@ class RidersController < ApplicationController
     @rider.cx_team = "Unattached"
     @rider.intl_team = "Unattached"
     @rider.ncca_club = "Unattached"
-    @rider.road_cat = 5
+    @rider.read_cat = @rider.female ? 4 : 5  # Cat 5 is only for men
     @rider.track_cat = 4
     @rider.cross_cat = 4
     @rider.oneday = true

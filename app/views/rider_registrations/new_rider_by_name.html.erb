@@ -1,0 +1,7 @@
+<h2>Select an Rider</h2>
+<%= form_tag("/race_registrations/new_rider") %>
+<% @rider.each do |r| %>
+    <%= radio_button_tag :rider, r.id %> &nbsp; <%= r.first_name %> &nbsp; <%= r.last_name %> &nbsp; <%= r.city %> &nbsp; <%= r.state %> &nbsp;
+    <%=  r.one_day ? "One Day" : r.license_number %><br>
+<% end %>
+<%= submit_tag "Select" %>
