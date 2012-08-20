@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120812021229) do
+ActiveRecord::Schema.define(:version => 20120820014157) do
 
   create_table "categories", :force => true do |t|
     t.string   "cat_name"
@@ -53,12 +53,16 @@ ActiveRecord::Schema.define(:version => 20120812021229) do
     t.decimal  "entry_fee"
     t.integer  "min_category"
     t.integer  "max_category"
-    t.boolean  "age_class"
     t.boolean  "all_categories"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "race_event_id"
     t.string   "name"
+    t.boolean  "masters"
+    t.boolean  "youth"
+    t.boolean  "u23"
+    t.boolean  "seniors"
+    t.boolean  "juniors"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -110,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20120812021229) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.boolean  "one_day"
+    t.integer  "category"
   end
 
   create_table "users", :force => true do |t|
