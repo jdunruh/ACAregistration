@@ -87,9 +87,20 @@ class RiderRegistrationsController < ApplicationController
 
   def new_rider
      @rider_registration = RiderRegistration.new
-     @races = Race.where("race_event_id = ?", session[:race_event])
+     races = Race.where("race_event_id = ?", session[:race_event])
      rider = Rider.where("license_number = ?", params[:license_number])
+     if rider.length == 0
+       flash[:notice] = "License number #{params[:license_number]} not found"
+       respond_to do |format|
+         format.html { render "rider_registrations/find"}
+         format.json { render json: nil }
+       end
+     end
      @rider = rider[0]
+     @races = races.select do |r|
+       r.race_eligible?(@rider)
+     end
+
 
      respond_to do |format|
        format.html # new.html.erb
@@ -123,6 +134,7 @@ class RiderRegistrationsController < ApplicationController
          format.json { render json: @rider_registration }
        end
      else
+       flash[:notice] = "No riders named #{params[:first_name]} #{params[:last_name]} found."
        render :find
      end
   end
