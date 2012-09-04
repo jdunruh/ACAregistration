@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -22,8 +22,12 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+end
+
+group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
+
 end
 
 gem 'jquery-rails'
