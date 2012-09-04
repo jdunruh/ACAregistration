@@ -35,71 +35,71 @@ describe Race do
 
   describe "master" do
     it "master should return true if the rider is 30" do
-       master(30).should_be true
+       master(30).should be_true
     end
 
     it "master should return true if rider is over 30" do
-      master(31).should_be true
+      master(31).should be_true
     end
 
     it "master should return false if rider is under 30" do
-      master(29).should_be false
+      master(29).should be_false
     end
   end
 
   describe "junior" do
     it "junior should return false if rider is under 10" do
-      junior(9).should_be false
+      junior(9).should be_false
     end
 
     it "junior should return false if rider is over 18" do
-      junior(19).should_be false
+      junior(19).should be_false
     end
 
     it "junior should return true if rider is 10" do
-      junior(10).should_be true
+      junior(10).should be_true
     end
 
     it "junior should return true if rider is 18" do
-      junior(18).should_be true
+      junior(18).should be_true
     end
   end
 
   describe "u23?" do
     it "u23 should return false if rider is under 10" do
-      u23?(9).should_be false
+      u23?(9).should be_false
     end
 
     it "u23 should return false if rider is over 23" do
-      u23?(24).should_be false
+      u23?(24).should be_false
     end
 
     it "u23 should return true if rider is 10" do
-      u23?(10).should_be true
+      u23?(10).should be_true
     end
 
 
     it "u23 should return true if rider is 24" do
-      u23?(24).should_be true
+      u23?(24).should be_true
     end
   end
 
   describe "youth" do
     it "should return false if rider is under 6" do
-      youth?(5).should_be false
+      youth?(5).should be_false
     end
 
     it "should return false if rider is over 9" do
-      youth?(10).should_be false
+      youth?(10).should be_false
     end
 
     it "should return true if rider is 6" do
-      youth?(6).should_be true
+      youth?(6).should be_true
     end
 
 
     it "should return true if rider is 9" do
-      youth?(9).should_be true
+      youth?(9).should be_true
     end
   end
 
@@ -119,63 +119,63 @@ describe Race do
 
   describe "age_ok" do
     it "should return true when a man is in his age group" do
-      mastermen1235to44.age_ok(35, false, 1).should_be true
+      mastermen1235to44.age_ok(35, false, 1).should be_true
     end
 
     it "should return false when a man is too young" do
-      mastermen1235to44.age_ok(34, false, 1).should_be false
+      mastermen1235to44.age_ok(34, false, 1).should be_false
     end
 
     it "should return true when a man is older that the max age" do
-      mastermen12335to44.age_ok(45, false, 1).should_be true
+      mastermen12335to44.age_ok(45, false, 1).should be_true
     end
 
     it "should return true when a woman is in her age group" do
-      masterwomen1234to44.age_ok(35, true, 1).should_be true
+      masterwomen1234to44.age_ok(35, true, 1).should be_true
     end
 
     it "should return true when a master woman is older than her age group" do
-      masterwomen1235to44.age_ok(45, true,1).should_be true
+      masterwomen1235to44.age_ok(45, true,1).should be_true
     end
 
     it "should return false when a master woman is younger than the age group" do
-      masterwomen1235to44.age_ok(32, true, 1).should_be false
+      masterwomen1235to44.age_ok(32, true, 1).should be_false
     end
 
     it "should return true when a master woman cat 1 is entering a men's race up to 10 yrs older" do
-      mastermen1245to54.age_ok(35, true, 1).should_be true
+      mastermen1245to54.age_ok(35, true, 1).should be_true
     end
 
     it "should return true when a master woman cat 3 is entering a men's race up to 20 yrs older" do
-       mastermen1255to100.age_ok(35, true,3).should_be true
+       mastermen1255to100.age_ok(35, true,3).should be_true
     end
 
     it "should return false when a senior woman enters a master's men's race" do
-      mastermen1235to44.age_ok(29, true, 1).should_be false
+      mastermen1235to44.age_ok(29, true, 1).should be_false
     end
 
     it "should return true when a youth enters a youth race" do
-      youth.age_ok(10, false,1).should_be true
+      youth.age_ok(10, false,1).should be_true
     end
 
     it "should return true when a junior enters a junior race with the rider's age" do
-      juniormen1216to18.age_ok(16, false, 1).should_be true
+      juniormen1216to18.age_ok(16, false, 1).should be_true
     end
 
     it "should return true when a junior enters a junior race for older riders" do
-      juniormen1216to18.age_ok(15, false,1).should_be true
+      juniormen1216to18.age_ok(15, false,1).should be_true
     end
 
     it "should return false when a youth rider enters a junior race" do
-      juniormen1214to16.age_ok(8, false, 1).should_be true
+      juniormen1214to16.age_ok(8, false, 1).should be_true
     end
 
     it "should return true when a junior enters a serior race" do
-      srmen12.age_ok(17, false, 1).should_be true
+      srmen12.age_ok(17, false, 1).should be_true
     end
 
     it "should return false when a junior enters a master's race" do
-      mastermen1235to44.age_ok(17, false, 1).should_be false
+      mastermen1235to44.age_ok(17, false, 1).should be_false
     end
 
   end
