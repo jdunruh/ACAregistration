@@ -45,10 +45,10 @@ class Race < ActiveRecord::Base
      ((not(self.women) && woman && master(racing_age) && self.masters && rider_category < 3) ? self.min_age <= racing_age + 10: false) ||
       ((not(self.women) && woman && master(racing_age) && self.masters && rider_category >= 3) ? self.min_age <= racing_age + 20 : false ) ||
       (self.u23 && u23?(racing_age)) ||
-      (self.juniors && junior(racing_age) && not(youth?(racing_age)) && racing_age <= self.max_age) ||
+      (self.juniors && junior(racing_age) && !youth?(racing_age) && racing_age <= self.max_age) ||
       (self.masters && master(racing_age) && racing_age >= self.min_age) ||
-      (self.youth && youth(racing_age)) ||
-      (self.seniors && not(youth(racing_age)))
+      (self.youth && youth?(racing_age)) ||
+      (self.seniors && !youth?(racing_age))
   end
 
 end
