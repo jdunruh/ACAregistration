@@ -1,6 +1,6 @@
 require "rspec"
 
-describe Race do
+describe "Race" do
   before(:all) do
     srmen12 = Race.new(:min_category=>2, :max_category => 1, :seniors=>true, :juniors=>false, :u23=>false, :youth=>false, :masters=>false, :women=>false)
     srmen345 = Race.new(:min_category=>5, :max_category => 3, :seniors=>true, :juniors=>false, :u23=>false, :youth=>false, :masters=>false, :women=>false)
@@ -84,7 +84,7 @@ describe Race do
     end
   end
 
-  describe "youth" do
+  describe "youth?" do
     it "should return false if rider is under 6" do
       youth?(5).should be_false
     end
