@@ -34,7 +34,7 @@ class Race < ActiveRecord::Base
   end
 
   def u23?(age)
-    age > 9 && age <= 23
+    age > 9 && age < 23
   end
 
   def category_ok(rider_category, woman)  # Women can enter one category easier in men's races
@@ -48,7 +48,9 @@ class Race < ActiveRecord::Base
       (self.juniors && junior(racing_age) && !youth?(racing_age) && racing_age <= self.max_age) ||
       (self.masters && master(racing_age) && racing_age >= self.min_age) ||
       (self.youth && youth?(racing_age)) ||
-      (self.seniors && !youth?(racing_age))
+      (self.seniors && !youth?(racing_age)) ||
+      (self.youth && youth?(racing_age)) ||
+      false
   end
 
 end
