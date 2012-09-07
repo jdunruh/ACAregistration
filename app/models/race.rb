@@ -50,8 +50,7 @@ class Race < ActiveRecord::Base
       (self.masters && master(racing_age) && racing_age >= self.min_age) ||
       (self.youth && youth?(racing_age)) ||
       (self.seniors && !youth?(racing_age)) ||
-      (self.youth && youth?(racing_age)) ||
-      false
+      (self.youth && youth?(racing_age))
   end
 
 end
