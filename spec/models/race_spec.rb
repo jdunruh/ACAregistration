@@ -8,12 +8,15 @@ describe Race do
 
     @srwomen234 = Race.new(:min_category=>4, :max_category =>2, :seniors=>true, :juniors=>false, :u23=>false, :youth=>false, :masters=>false, :women=>false)
     @masterswomen1235plus = Race.new(:min_category=>2, :max_category => 1, :seniors=>false, :juniors=>false, :u23=>false, :youth=>false, :masters=>true, :women=> true, :min_age => 35, :max_age => 100)
+    @masterswomen1245plus = Race.new(:min_category=>2, :max_category => 1, :seniors=>false, :juniors=>false, :u23=>false, :youth=>false, :masters=>true, :women=> true, :min_age => 45, :max_age => 100)
     @masterswomen3435plus = Race.new(:min_category=>4, :max_category => 3, :seniors=>false, :juniors=>false, :u23=>false, :youth=>false, :masters=>true, :women=>true, :min_age => 35, :max_age => 100)
     @juniormen1216to18 = Race.new(:min_category=>2, :max_category => 1, :seniors=>false, :juniors=>true, :u23=>false, :youth=>false, :masters=>false, :women=>false, :min_age => 16, :max_age => 18)
     @juniormen3416to18 = Race.new(:min_category=>4, :max_category => 3, :seniors=>false, :juniors=>true, :u23=>false, :youth=>false, :masters=>false, :women=>false, :min_age => 16, :max_age => 18)
     @juniormen1214to16 = Race.new(:min_category=>2, :max_category => 1, :seniors=>false, :juniors=>true, :u23=>false, :youth=>false, :masters=>false, :women=>false, :min_age => 14, :max_age => 16)
     @juniormen3414to16 = Race.new(:min_category=>4, :max_category => 3, :seniors=>false, :juniors=>true, :u23=>false, :youth=>false, :masters=>false, :women=>false, :min_age => 14, :max_age => 16)
+    @juniormen514to16 = Race.new(:min_category=>5, :max_category => 5, :seniors=>false, :juniors=>true, :u23=>false, :youth=>false, :masters=>false, :women=>false, :min_age => 14, :max_age => 16)
     @juniorwomen1216to18 = Race.new(:min_category=>2, :max_category => 1, :seniors=>false, :juniors=>true, :u23=>false, :youth=>false, :masters=>false, :women=>true, :min_age => 16, :max_age => 18)
+    @juniorwomen1214to15 = Race.new(:min_category=>2, :max_category => 1, :seniors=>false, :juniors=>true, :u23=>false, :youth=>false, :masters=>false, :women=>true, :min_age => 14, :max_age => 15)
     @u23men1 = Race.new(:min_category=>1, :max_category => 1, :seniors=>false, :juniors=>false, :u23=>true, :youth=>false, :masters=>false, :women=>false)
     @u23men2345= Race.new(:min_category=>5, :max_category => 2, :seniors=>false, :juniors=>false, :u23=>true, :youth=>false, :masters=>false, :women=>false)
     @u23women1 = Race.new(:min_category=>1, :max_category => 1, :seniors=>false, :juniors=>false, :u23=>true, :youth=>false, :masters=>false, :women=>true)
@@ -25,6 +28,7 @@ describe Race do
     @mastersmen34445to54 = Race.new(:min_category=>5, :max_category => 3, :seniors=>false, :juniors=>false, :u23=>false, :youth=>false, :masters=>true, :women=> false, :min_age => 45, :max_age => 54)
     @mastersmen1255to100 = Race.new(:min_category=>2, :max_category => 1, :seniors=>false, :juniors=>false, :u23=>false, :youth=>false, :masters=>true, :women=> false, :min_age => 55, :max_age => 100)
     @mastersmen34555to100 = Race.new(:min_category=>5, :max_category => 3, :seniors=>false, :juniors=>false, :u23=>false, :youth=>false, :masters=>true, :women=> false, :min_age => 55, :max_age => 100)
+    @mastersmen1234556to100 = Race.new(:min_category=>5, :max_category => 3, :seniors=>false, :juniors=>false, :u23=>false, :youth=>false, :masters=>true, :women=> false, :min_age => 56, :max_age => 100)
     @masterswomen1235to44 = Race.new(:min_category => 1, :max_category => 2, :seniors=>false, :juniors=>false, :u23=>false, :youth=>false, :masters=>true, :women=>true, :min_age=>35, :max_age=>44)
     @youth=Race.new(:min_category=>1, :max_category=>5, :seniors=>false, :juniors=>false, :u23=>false, :youth=>true, :masters=>true, :women=>false, :min_age=>6, :max_age=>9)
 
@@ -32,13 +36,18 @@ describe Race do
     @woman120=Rider.new(:female => true, :road_cat => 1, :racing_age => 20)
     @woman344=Rider.new(:female => true, :road_cat => 3, :racing_age => 44)
     @woman216=Rider.new(:female => true, :road_cat => 2, :racing_age => 16)
+    @woman215=Rider.new(:female => true, :road_cat => 2, :racing_age => 15)
     @woman422=Rider.new(:female => true, :road_cat => 4, :racing_age => 22)
     @woman219=Rider.new(:female => true, :road_cat => 2, :racing_age => 19)
+    @woman317=Rider.new(:female => true, :road_cat => 3, :racing_age => 17)
     @man145=Rider.new(:female => false, :road_cat => 1, :racing_age => 45)
     @man129=Rider.new(:female => false, :road_cat => 1, :racing_age => 29)
     @man215=Rider.new(:female => false, :road_cat => 2, :racing_age => 15)
     @man216=Rider.new(:female => false, :road_cat => 2, :racing_age => 16)
     @man321=Rider.new(:female => false, :road_cat => 3, :racing_age => 21)
+    @man335=Rider.new(:female => false, :road_cat => 3, :racing_age => 35)
+    @youth7=Rider.new(:female => false, :road_cat => 3, :racing_age => 7)
+    @youth8=Rider.new(:female => true, :road_cat => 3, :racing_age => 8)
   end
 
   describe "master" do
@@ -257,32 +266,87 @@ describe Race do
     it "should return false when a junior man enters a master's race" do
       @mastersmen1235to44.race_eligible(@man216).should be_false
     end
-    it "should return false when a junior woman enters a senior women's race in a category other than her own"
-    it "should return true when a junior woman enters a junior women's race in her category and in her age group"
-    it "should return false when a junior woman enters a junior women's race in a category other than her own and in her age group"
-    it "should return true when a junior woman enters a junior women's race in her category and in an older age group"
-    it "should return false when a junior woman enters a junior women's race in her category and in a younger age group"
-    it "should return false when a junior woman enters a master's race"
-    it "should return true when a junior woman enters a junior men's race in her category and her age group"
-    it "should return true when a junior woman enters a junior men's race in her category and an older age group"
-    it "should return true when a junior woman enters a junior men's race in one category easier than hers and in her age group"
-    it "should return false when a junior woman enters a junior men's race in two categories easier than hers and in her age group"
-    it "should return true when a master's man enters a men's race in his category and age group"
-    it "should return true when a master's man enters a men's race in his category and an older age group"
-    it "should return false when a master's man enters a men's race in his category and a younger age group"
-    it "should return false when a master's man enters a woman's race in his category and age group"
-    it "should return true when a master's woman enters a women's race in her category and age group"
-    it "should return true when a master's woman enters a women's race in her category and an older age group"
-    it "should return false when a master's woman enters a women's race in her category and a younger age group"
-    it "should return true when a master's woman enters a man's race in her category and age group"
-    it "should return true when a master's woman enters a men's race in her category and up to 10 years older"
-    it "should return true when a master's woman category 3 or 4 enters a men's race in her category and up to 20 years older"
-    it "should return false when a master's woman category 3 or 4 enters a men's race in her category more than 20 years older"
-    it "should return false when a master's woman category 1 or 2 enters a men's race in her category more than 10 years older"
-    it "should return true when a youth enters a youth race"
-    it "should return false when a youth enters a juniors race"
-    it "should return false when a youth enters a seniors race"
-    it "should return false when a youth enters a master's race"
+    it "should return false when a junior woman enters a senior women's race in a category other than her own" do
+      @srwomen1.race_eligible(@woman216).should be_false
+    end
+    it "should return true when a junior woman enters a junior women's race in her category and in her age group" do
+      @juniorwomen1216to18.race_eligible(@woman216).should be_true
+    end
+    it "should return false when a junior woman enters a junior women's race in a category other than her own and in her age group" do
+      @juniorwomen1216to18.race_eligible(@woman317).should be_false
+    end
+    it "should return true when a junior woman enters a junior women's race in her category and in an older age group" do
+      @juniorwomen1216to18.race_eligible(@woman215).should be_true
+   end
+    it "should return false when a junior woman enters a junior women's race in her category and in a younger age group" do
+      @juniorwomen1214to15.race_eligible(@woman216).should be_false
+    end
+    it "should return false when a junior woman enters a master's race" do
+      @masterswomen1235plus.race_eligible(@woman216).should be_false
+    end
+    it "should return true when a junior woman enters a junior men's race in her category and her age group" do
+      @juniormen1216to18.race_eligible(@woman216).should be_true
+    end
+    it "should return true when a junior woman enters a junior men's race in her category and an older age group" do
+      @juniormen1216to18.race_eligible(@woman215).should be_true
+    end
+    it "should return true when a junior woman enters a junior men's race in one category easier than hers and in her age group" do
+      @juniormen3416to18.race_eligible(@woman216).should be_true
+    end
+    it "should return false when a junior woman enters a junior men's race in two categories easier than hers and in her age group" do
+       @juniormen514to16.race_eligible(@woman216).should be_false
+    end
+    it "should return true when a master's man enters a men's race in his category and age group" do
+       @mastersmen3435to44.race_eligible(@man335).should be_true
+    end
+    it "should return false when a master's man enters a men's race in his category and an older age group" do
+       @mastersman3445to54.race_eligible(@man335).should be_false
+    end
+    it "should return true when a master's man enters a men's race in his category and a younger age group" do
+      @mastersman1235to44.race_eligible(@man145).should be_true
+    end
+    it "should return false when a master's man enters a woman's race in his category and age group" do
+      @masterswomen1235plus.race_eligible(@man145).should be_false
+    end
+    it "should return true when a master's woman enters a women's race in her category and age group" do
+      @masterswomen3435plus.race_eligible(@woman344).should be_true
+    end
+    it "should return folse when a master's woman enters a women's race in her category and an older age group" do
+       @masterswomen1245plus.race_eligible(@woman135).should be_false
+    end
+    it "should return true when a master's woman enters a women's race in her category and a younger age group" do
+      @masterswomen1235plus.race_eligible(@woman145).should be_true
+    end
+    it "should return true when a master's woman enters a man's race in her category and age group" do
+      @mastersmen1235plus.race_eligible(@woman135).should be_true
+    end
+    it "should return true when a master's woman enters a men's race in her category and up to 10 years older" do
+      @mastersmen1245to54.race_eligible(@woman135).should be_true
+    end
+    it "should return true when a master's woman category 3 or 4 enters a men's race in her category and up to 20 years older" do
+      @mastersmen34555to100.race_eligible(@woman335).should be_true
+    end
+    it "should return false when a master's woman category 3 or 4 enters a men's race in her category more than 20 years older" do
+      @mastersmen1234556to100.race_eligible(@woman335).should be_false
+    end
+    it "should return false when a master's woman category 1 or 2 enters a men's race in her category more than 10 years older" do
+      @mastersmen1255to100.race_eligible(@woman135).should be_false
+    end
+    it "should return true when a youth enters a youth race" do
+      youth.race_eligible(youth7).should be_true
+    end
+    it "should return true when a female youth enters a youth race" do
+      youth.race_eligible(youth8).should be_true
+    end
+    it "should return false when a youth enters a juniors race" do
+      @juniormen1214to16.race_eligible(youth8).should be_false
+    end
+    it "should return false when a youth enters a seniors race" do
+      @srwomen1.race_eligible(youth8).should be_false
+    end
+    it "should return false when a youth enters a master's race" do
+      @mastersmen1235to44.race_eligible(youth7).should be_false
+    end
   end
 end
 

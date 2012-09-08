@@ -4,7 +4,7 @@ class Race < ActiveRecord::Base
   has_many :entries
   has_many :rider_registrations, :through => :entries
 
-  def race_eligible?(rider)
+  def race_eligible?(rider) #rider eligibility for race
     rider_category = eval("rider.#{rider.race_event.race_type.race_type_column}")
     category_ok(rider_category, rider.woman) && age_ok(rider.racing_age, rider.woman, rider_category)  &&
         age_ok(rider.racing_age, rider.female, rider_category) && !(!rider.female && self.women)
