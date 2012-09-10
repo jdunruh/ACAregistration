@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120820014157) do
+ActiveRecord::Schema.define(:version => 20120910132123) do
 
   create_table "categories", :force => true do |t|
     t.string   "cat_name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20120820014157) do
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.string   "race_type_abbreviation"
+    t.string   "race_type_column"
   end
 
   create_table "races", :force => true do |t|
