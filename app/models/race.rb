@@ -1,5 +1,5 @@
 class Race < ActiveRecord::Base
-  attr_accessible :entry_fee, :max_age, :max_category, :min_age, :min_category, :race_event_id, :women, :age_class, :all_categories, :name, :juniors, :seniors, :u23, :youth, :masters
+  attr_accessible :entry_fee, :max_age, :max_category, :min_age, :min_category, :race_event_id, :women, :all_categories, :name, :juniors, :seniors, :u23, :youth, :masters
   belongs_to :race_event
   has_many :entries
   has_many :rider_registrations, :through => :entries
@@ -7,7 +7,7 @@ class Race < ActiveRecord::Base
   def race_eligible?(rider) #rider eligibility for race
     rider_category = eval("rider.#{self.race_event.race_type.race_type_column}")
     category_ok(rider_category, rider.female) && age_ok(rider.racing_age, rider.female, rider_category)  &&
-        age_ok(rider.racing_age, rider.female, rider_category) && !(!rider.female && self.women)
+        !(!rider.female && self.women)
   end
 
 
@@ -39,7 +39,7 @@ class Race < ActiveRecord::Base
   end
 
   def category_ok(rider_category, woman)  # Women can enter one category easier in men's races
-    ((not(self.women) && woman) ? rider_category + 1 >= self.min_category && rider_category + 1 <= self.max_category : false) || rider_category >= self.min_category && rider_category <= self.max_category
+    ((not(self.women) && woman) ? (rider_category + 1 >= self.min_category && rider_category <= self.max_category) : rider_category >= self.min_category && rider_category <= self.max_category)
   end
 
   def age_ok(racing_age, woman, rider_category)
