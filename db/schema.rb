@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910132123) do
+ActiveRecord::Schema.define(:version => 20120916015503) do
+
+  create_table "aca_data", :force => true do |t|
+    t.integer  "aca_number"
+    t.integer  "usac_number"
+    t.boolean  "has_transponder"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "cat_name"

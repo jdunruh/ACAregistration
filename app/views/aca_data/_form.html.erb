@@ -1,0 +1,13 @@
+<%= simple_form_for(@aca_datum) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :aca_number %>
+    <%= f.input :usac_number %>
+    <%= f.input :has_transponder %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

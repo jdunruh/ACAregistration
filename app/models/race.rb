@@ -13,7 +13,7 @@ class Race < ActiveRecord::Base
 
       # Masters OK to race their age or younger, but not U23, Juniors, and Youth
       # U23 and Juniors race their age or older, but not Masters
-      # Mountain Bike Juniors 14 and under may enter older, but only up to cat 2
+      # Mountain Bike Juniors 14 and under may enter older, but only up to cat 2 - NOT IMPLEMENTED
       # UCI team members cannot enter Masters
       # Women may enter any men's race eligible with the woman's cat, age, and performance
       # Women may enter any men's race up to one category lower than their women's category

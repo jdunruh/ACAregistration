@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Aca number:</b>
+  <%= @aca_datum.aca_number %>
+</p>
+
+<p>
+  <b>Usac number:</b>
+  <%= @aca_datum.usac_number %>
+</p>
+
+<p>
+  <b>Has transponder:</b>
+  <%= @aca_datum.has_transponder %>
+</p>
+
+
+<%= link_to 'Edit', edit_aca_datum_path(@aca_datum) %> |
+<%= link_to 'Back', aca_data_path %>

@@ -1,0 +1,27 @@
+<h1>Listing aca_data</h1>
+
+<table>
+  <tr>
+    <th>Aca number</th>
+    <th>Usac number</th>
+    <th>Has transponder</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @aca_data.each do |aca_datum| %>
+  <tr>
+    <td><%= aca_datum.aca_number %></td>
+    <td><%= aca_datum.usac_number %></td>
+    <td><%= aca_datum.has_transponder %></td>
+    <td><%= link_to 'Show', aca_datum %></td>
+    <td><%= link_to 'Edit', edit_aca_datum_path(aca_datum) %></td>
+    <td><%= link_to 'Destroy', aca_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Aca datum', new_aca_datum_path %>

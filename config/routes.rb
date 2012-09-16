@@ -1,5 +1,7 @@
 ACAregistration::Application.routes.draw do
 
+  resources :aca_data
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
