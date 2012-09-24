@@ -17,6 +17,8 @@ class RiderRegistrationsController < ApplicationController
   # GET /rider_registrations/1.json
   def show
     @rider_registration = RiderRegistration.find(params[:id])
+    @entries = Entry.find(@rider_registration.id)
+    @rider = Rider.find(@rider_registration.rider_id )
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,15 +46,25 @@ class RiderRegistrationsController < ApplicationController
   # POST /rider_registrations
   # POST /rider_registrations.json
   def create
-    @rider_registration = RiderRegistration.new(params[:rider_registration])
+    @rider_registration = RiderRegistration.new
+    @rider_registration.rider = @rider
+    p = params[:rider_registration][:entry_ids]
+    p  ||= []
+    entries=p.reject {|e| e.empty?}
+    RiderRegistration.transaction do
+      entries.each do |i|
+        e = Entry.new(:rider_registration => @rider_registration, :race_id => i, :number => Race.find(i).next_rider_number)
+        e.save!
+      end
 
-    respond_to do |format|
-      if @rider_registration.save
-        format.html { redirect_to @rider_registration, notice: 'Rider registration was successfully created.' }
-        format.json { render json: @rider_registration, status: :created, location: @rider_registration }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @rider_registration.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @rider_registration.save
+          format.html { redirect_to @rider_registration, notice: 'Rider registered.' }
+          format.json { render json: @rider_registration, status: :created, location: @rider_registration }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @rider_registration.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916015503) do
+ActiveRecord::Schema.define(:version => 20120921031540) do
 
   create_table "aca_data", :force => true do |t|
     t.integer  "aca_number"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120916015503) do
     t.integer  "rider_registration_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "number"
   end
 
   create_table "race_events", :force => true do |t|
@@ -63,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20120916015503) do
     t.integer  "min_category"
     t.integer  "max_category"
     t.boolean  "all_categories"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "race_event_id"
     t.string   "name"
     t.boolean  "masters"
@@ -72,6 +73,9 @@ ActiveRecord::Schema.define(:version => 20120916015503) do
     t.boolean  "u23"
     t.boolean  "seniors"
     t.boolean  "juniors"
+    t.integer  "starting_number"
+    t.integer  "next_number"
+    t.integer  "field_limit"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -124,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20120916015503) do
     t.datetime "updated_at",        :null => false
     t.boolean  "one_day"
     t.integer  "category"
+    t.integer  "xponder"
   end
 
   create_table "users", :force => true do |t|

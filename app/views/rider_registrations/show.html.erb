@@ -2,12 +2,19 @@
 
 <p>
   <b>Rider:</b>
-  <%= @rider_registration.rider_id %>
+  <%= @rider_registration.rider.name %> <br>
+  License <%= @rider_registration.rider.license_number %>
 </p>
 
 <p>
-  <b>Entry:</b>
-  <%= @rider_registration.entry_id %>
+  <% if length(@entries) == 1 %>
+      <b>Race:</b>
+  <% else %>
+      <b>Races:</b>
+  <% end %>
+  <% @entries.each do |e| %>
+    <%= e.race.name %><&nbsp><%= e.number %><br>
+  <% end %>
 </p>
 
 

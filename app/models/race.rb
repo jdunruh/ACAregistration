@@ -53,4 +53,12 @@ class Race < ActiveRecord::Base
       (self.youth && youth?(racing_age))
   end
 
+  def next_rider_number
+    self.with_lock do
+      nn = self.next_number
+      self.next_number = self.next_number + 1
+      self.save!
+      return nn
+      end
+  end
 end
