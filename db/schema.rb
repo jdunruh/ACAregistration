@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921031540) do
+ActiveRecord::Schema.define(:version => 20120925022133) do
 
   create_table "aca_data", :force => true do |t|
     t.integer  "aca_number"
@@ -94,9 +94,10 @@ ActiveRecord::Schema.define(:version => 20120921031540) do
   create_table "rider_registrations", :force => true do |t|
     t.integer  "rider_id"
     t.integer  "entry_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.boolean  "signed_release"
+    t.integer  "transponder_number"
   end
 
   create_table "riders", :force => true do |t|

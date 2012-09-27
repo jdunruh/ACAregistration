@@ -109,6 +109,7 @@ class RiderRegistrationsController < ApplicationController
        end
      end
      @rider = rider[0]
+     @aca = AcaData.where("usac_number = ?", @rider.license_number)
      @races = races.select do |r|
        r.race_eligible?(@rider)
      end

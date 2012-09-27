@@ -2,8 +2,14 @@
 
 <p> Registering  <%= @rider[:first] %> &nbsp; <%= @rider[:last] %>  <%= @rider[:license_number] %> </p>
 
-<%= simple_form_for :races, :url => "/rider_registrations", :method => :post do |f| %>
-    <%=  f.input :name, :collection => @races, :as => :check_boxes %>
+<%= simple_form_for @rider_registration, :url => "/rider_registrations", :method => :post do |f| %>
+    <%=  f.association :entries, :collection => @races, :as => :check_boxes %> <br>
+    <%= f.input signed_release %> <br>
+    <% if @aca && @aca.transponder %>
+        <%= f.input transponder_number, :input_html => {:value => @aca.aca_number.to_s } %>
+    <% else %>
+        <%= f.input transponder_number %>
+    <% end %>
     <%= f.submit "Register" %>
 <% end %>
 

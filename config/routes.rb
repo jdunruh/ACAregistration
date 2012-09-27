@@ -12,7 +12,9 @@ ACAregistration::Application.routes.draw do
   match "/riders/find" => "rider_registrations#find", :as => :find_riders
   match "/riders/upload_file" => "riders#upload_file"
   match "/riders/upload" => "riders#upload"
-  match "riders/new_one_day" => "riders#new_one_day", :as => :new_one_day_rider
+  match "/riders/new_one_day" => "riders#new_one_day", :as => :new_one_day_rider
+  match "/ada_data/upload_file" => "aca_data#upload_file"
+  match "/aca_data/upload" => "aca_data#upload"
 
   resources :race_events
   resources :riders
