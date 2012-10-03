@@ -5,7 +5,7 @@
 <%= simple_form_for @rider_registration, :url => "/rider_registrations", :method => :post do |f| %>
     <%=  f.association :entries, :collection => @races, :as => :check_boxes %> <br>
     <%= f.input :signed_release %> <br>
-    <% if @aca && not(@aca.empty?)&& @aca.has_transponder %>
+    <% if (@aca && !(@aca.empty?)&& @aca.has_transponder) %>
         <%= f.input :transponder_number, :input_html => {:value => @aca.aca_number.to_s } %>
     <% else %>
         <%= f.input :transponder_number %>
