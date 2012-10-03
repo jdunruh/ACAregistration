@@ -87,15 +87,23 @@ class AcaDataController < ApplicationController
      n=0
      CSV.foreach(params[:aca_database][:file].tempfile, :headers => true)  do |row|
        c=AcaDatum.new
-       c.aca_number = row["acaNo"] ? false : true
+       c.aca_number = row["acaNo"].to_i unless row["acaNo"].empty?
        c.usac_number = row["usac"].to_i
-       c.has_transponder  = !(row["transponder"].empty?) && row["transponder"].to_i > 0
+       c.has_transponder  = !(row["transponders"].empty?) && row["transponders"].to_i > 0
        if c.save
           n=n+1
           GC.start if n%50==0
        end
      end
      flash.now[:message]="CSV Import Successful,  #{n} new records added to data base"
-   end
+  end
+
+  def upload_file
+    respond_to do |format|
+      format.html
+      format.json { head :no_content }
+    end
+  end
+
 
 end

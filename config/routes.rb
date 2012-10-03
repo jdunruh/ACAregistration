@@ -1,7 +1,5 @@
 ACAregistration::Application.routes.draw do
 
-  resources :aca_data
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
@@ -13,7 +11,7 @@ ACAregistration::Application.routes.draw do
   match "/riders/upload_file" => "riders#upload_file"
   match "/riders/upload" => "riders#upload"
   match "/riders/new_one_day" => "riders#new_one_day", :as => :new_one_day_rider
-  match "/ada_data/upload_file" => "aca_data#upload_file"
+  match "/aca_data/upload_file" => "aca_data#upload_file"
   match "/aca_data/upload" => "aca_data#upload"
 
   resources :race_events
@@ -29,6 +27,8 @@ ACAregistration::Application.routes.draw do
   resources :categories
 
   resources :races
+
+  resources :aca_data
 
   root :to => "race_events#select"
 

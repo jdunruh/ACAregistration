@@ -17,7 +17,7 @@ class RiderRegistrationsController < ApplicationController
   # GET /rider_registrations/1.json
   def show
     @rider_registration = RiderRegistration.find(params[:id])
-    @entries = Entry.find(@rider_registration.id)
+    @entries = Entry.where(:rider_registration_id => @rider_registration.id)
     @rider = Rider.find(@rider_registration.rider_id )
 
     respond_to do |format|
@@ -47,7 +47,7 @@ class RiderRegistrationsController < ApplicationController
   # POST /rider_registrations.json
   def create
     @rider_registration = RiderRegistration.new
-    @rider_registration.rider = @rider
+    @rider_registration.rider_id = session[:rider]
     p = params[:rider_registration][:entry_ids]
     p  ||= []
     entries=p.reject {|e| e.empty?}
@@ -109,7 +109,8 @@ class RiderRegistrationsController < ApplicationController
        end
      end
      @rider = rider[0]
-     @aca = AcaData.where("usac_number = ?", @rider.license_number)
+     session[:rider] = @rider.id
+     @aca = AcaDatum.where("usac_number = ?", @rider.license_number)
      @races = races.select do |r|
        r.race_eligible?(@rider)
      end
