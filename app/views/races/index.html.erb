@@ -1,37 +1,7 @@
-<h1>Listing races</h1>
+<h1>Listing races for <%= @race.first.race_event.name %></h1>
 
-<table>
-  <tr>
-    <th>Women?</th>
-    <th>Min age</th>
-    <th>Max age</th>
-    <th>Entry fee</th>
-    <th>Min category</th>
-    <th>Max category</th>
-    <th>Age class?</th>
-    <th>All categories?</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @races.each do |race| %>
-  <tr>
-    <td><%= race.women? %></td>
-    <td><%= race.min_age %></td>
-    <td><%= race.max_age %></td>
-    <td><%= race.entry_fee %></td>
-    <td><%= race.min_category %></td>
-    <td><%= race.max_category %></td>
-    <td><%= race.age_class? %></td>
-    <td><%= race.all_categories? %></td>
-    <td><%= link_to 'Show', race %></td>
-    <td><%= link_to 'Edit', edit_race_path(race) %></td>
-    <td><%= link_to 'Destroy', race, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= form_tag("/entries/index_by_race") %>
+<% @races.each do |r| %>
+    <%= radio_button_tag :race, r.id %> <%= r.name %><br>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Race', new_race_path %>
+<%= submit_tag "Select" %>

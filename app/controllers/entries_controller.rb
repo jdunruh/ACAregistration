@@ -10,6 +10,17 @@ class EntriesController < ApplicationController
     end
   end
 
+  # PUT /entries/index_by_race
+  # PUT /entries/index_by_race.json
+  def index_by_race
+    @entries = Entry.where("race_id = ?", params[:race])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @entries }
+    end
+  end
+
   # GET /entries/1
   # GET /entries/1.json
   def show

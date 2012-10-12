@@ -61,4 +61,5 @@ class Race < ActiveRecord::Base
       return nn
       end
   end
+
 end

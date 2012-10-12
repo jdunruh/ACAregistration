@@ -2,7 +2,7 @@ class RacesController < ApplicationController
   # GET /races
   # GET /races.json
   def index
-    @races = Race.all
+    @races = session[:race_event] ? Race.where("race_event_id = ?", session[:race_event]): Race.all
 
     respond_to do |format|
       format.html # index.html.erb

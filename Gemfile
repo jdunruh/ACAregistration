@@ -35,6 +35,7 @@ gem 'jquery-rails'
 gem 'rails_admin'
 gem 'devise'
 gem 'simple_form'
+gem 'nested_form'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
