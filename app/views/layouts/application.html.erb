@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ACAregistration</title>
+  <% if content_for?(:head) %>
+    <%= content_for(:head) %>
+  <% else %>
+    <title>ACA Registration</title>
+  <% end %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -9,6 +13,13 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<ul class=main_menu>
+  <li><%= link_to "Register Riders", new_rider_registration_path %></li>
+  <li><%= link_to "Upload USAC Database", riders_upload_file_path %></li>
+  <li><%= link_to "Upload ACA Database", aca_data_upload_file_path %></li>
+  <li><%= link_to "List Events", race_events_path %></li>
+  <li><%= link_to "Add Races", new_race_event_path %></li>
+</ul>
 
 <%= yield %>
 

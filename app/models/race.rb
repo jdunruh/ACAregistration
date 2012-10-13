@@ -62,4 +62,38 @@ class Race < ActiveRecord::Base
       end
   end
 
+  def raicng_class=(cl)
+    case cl
+      when 'Masters'
+        self.masters=true
+      when 'Seniors'
+        self.seniors=true
+      when 'Juniors'
+        self.juniors=true
+      when 'U23'
+        self.u23=true
+      when "Youth"
+        self.youth=true
+      else raise("Bad Racing Class")
+    end
+  end
+
+  def self.racing_classes
+    %w(Masters Senior Juniors U23 Youth)
+  end
+
+  def racing_class
+    case
+      when self.masters
+        'Masters'
+      when self.seniors
+        'Seniors'
+      when self.juniors
+        'Juniors'
+      when self.u23
+        'U23'
+      when self.youth
+        'Youth'
+    end
+  end
 end
