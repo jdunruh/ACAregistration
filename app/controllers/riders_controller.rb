@@ -115,7 +115,7 @@ class RidersController < ApplicationController
       c.road_cat = row["Road Cat"].to_i
       c.track_cat = row["TrackCat"].to_i
       c.cross_cat = row["Cross Cat"].to_i
-      c.birthdate = row["birthdate"]
+      # c.birthdate = row["birthdate"]
       c.citizen = row["citizen"] == "Y" ? true : false
       c.emergency_contact = row["emergency contact"]
       c.e_contact_phone = row["e-contact phone"]
