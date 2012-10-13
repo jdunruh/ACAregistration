@@ -1,23 +1,25 @@
 <h1>New race_event</h1>
-<%=  nested_simple_form_for @race_event do |f|  %>
+<%=  simple_nested_form_for @race_event do |f|  %>
     <%= f.input :name %>
     <%= f.input :date %>
-    <%= f.association :race_type %>
+    <%= f.association :race_type, :label_method => :race_type, :value_method => :id %>
+    <%= f.link_to_add "Add a race", :races %>
     <%= f.simple_fields_for :races do |r| %>
-        <%= r.input :women %>
         <%= r.input :min_age %>
         <%= r.input :max_age %>
         <%= r.input :entry_fee %>
         <%= r.input :min_category %>
         <%= r.input :max_category %>
         <%= r.input :name %>
+        <%= r.input :women %>
         <%= r.input :masters %>
         <%= r.input :youth %>
         <%= r.input :u23 %>
         <%= r.input :seniors %>
-        <%= r.input :junior %>
+        <%= r.input :juniors %>
         <%= r.input :starting_number %>
         <%= r.input :field_limit %>
+        <%= r.link_to_remove "Remove this race" %>
         <% end %>
     <% end %>
 
