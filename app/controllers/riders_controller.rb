@@ -119,13 +119,13 @@ class RidersController < ApplicationController
       c.citizen = row["citizen"] == "Y" ? true : false
       c.emergency_contact = row["emergency contact"]
       c.e_contact_phone = row["e-contact phone"]
-      c.oneday = false
+      c.one_day = false
       if c.save
          n=n+1
          GC.start if n%50==0
       end
     end
-    flash.now[:message]="CSV Import Successful,  #{n} new records added to data base"
+    flash.now[:notice]="CSV Import Successful,  #{n} new records added to data base"
   end
 
   def new_one_day
