@@ -1,20 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @race_event.name %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @race_event.date %>
-</p>
-
-<p>
-  <b>Race type:</b>
-  <%= @race_event.race_type_id %>
-</p>
-
-
+    <p>Event: <%= @race_event.date %></p>
+    <p>Type: <%= @race_event.race_type.name %></p>
+    <% @race_event.races.each do |r| %>
+        <p><%= r.name %></p>
+    <% end %>
 <%= link_to 'Edit', edit_race_event_path(@race_event) %> |
 <%= link_to 'Back', race_events_path %>

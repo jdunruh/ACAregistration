@@ -3,5 +3,6 @@ class RaceEvent < ActiveRecord::Base
   has_many :races, :dependent => :destroy
   accepts_nested_attributes_for :races, :allow_destroy => true
   belongs_to :race_type
-  validates :name, :date, :race_type_id, :presence => true
+  validates :name, :date, :presence => true
+  validates_associated :races
 end

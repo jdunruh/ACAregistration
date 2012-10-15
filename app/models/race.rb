@@ -3,6 +3,10 @@ class Race < ActiveRecord::Base
   belongs_to :race_event
   has_many :entries
   has_many :rider_registrations, :through => :entries
+  validates :entry_fee, :max_age, :max_category, :min_age, :min_category, :women, :name, :presence => true
+  validates :max_age, :min_age, :numericality => { :only_integer => true }
+  validates :min_category, :max_category, :numericality => {:only_integer => true, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 6}
+  validates :entry_fee, :numericality => true, :format => {with => "(\d+)|(\d*\.\d{2})"}
 
   def race_eligible?(rider) #rider eligibility for race
     rider_category = eval("rider.#{self.race_event.race_type.race_type_column}")

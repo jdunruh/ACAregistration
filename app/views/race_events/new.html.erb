@@ -1,6 +1,17 @@
 <% content_for :head do %>
   <title>New Event</title>
 <% end %>
+<% if @race_event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@race_event.errors.count, "error") %> prohibited this race_event from being saved:</h2>
+
+    <ul>
+    <% @race_event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <h1>New Event</h1>
 <%=  simple_nested_form_for @race_event do |f|  %>
     <%= f.input :name %>

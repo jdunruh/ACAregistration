@@ -1,6 +1,27 @@
-<h1>Editing race_event</h1>
+<% content_for :head do %>
+  <title>New Event</title>
+<% end %>
+<% if @race_event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@race_event.errors.count, "error") %> prohibited this race_event from being saved:</h2>
 
-<%= render 'form' %>
+    <ul>
+    <% @race_event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<h1>Editing Event</h1>
+<%=  simple_nested_form_for @race_event do |f|  %>
+    <%= f.input :name %>
+    <%= f.input :date %>
+    <%= f.association :race_type, :label_method => :race_type, :value_method => :id, :include_blank => false %>
+    <%= f.simple_fields_for :races %>
+    <%= f.link_to_add "Add a race", :races %>
+    <%= f.submit 'Update Event' %>
+    <% end %>
+
 
 <%= link_to 'Show', @race_event %> |
 <%= link_to 'Back', race_events_path %>
