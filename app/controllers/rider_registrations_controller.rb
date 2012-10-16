@@ -53,7 +53,7 @@ class RiderRegistrationsController < ApplicationController
     entries=p.reject {|e| e.empty?}
     RiderRegistration.transaction do
       entries.each do |i|
-        e = Entry.new(:rider_registration => @rider_registration, :race_id => i, :number => Race.find(i).next_rider_number)
+        e = Entry.new(:rider_registration_id => @rider_registration.id, :race_id => i, :number => Race.find(i).next_rider_number)
         e.save!
       end
 
