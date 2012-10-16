@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>Race</th>
     <th>Rider</th>
-    <th>Signed release?</th>
+    <th></th>
+    <th>License Number</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,11 +12,10 @@
 
 <% @entries.each do |entry| %>
   <tr>
-    <td><%= entry.race_id %></td>
-    <td><%= entry.rider_id %></td>
-    <td><%= entry.signed_release? %></td>
-    <td><%= link_to 'Show', entry %></td>
-    <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
+    <td><%= entry.rider_registration.rider.first_name %></td>
+    <td><%= entry.rider_registration.rider.last_name %></td>
+    <td><%= entry.rider_registration.rider.license_number %></td>
+
     <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

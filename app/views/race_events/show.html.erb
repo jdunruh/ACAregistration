@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 
     <p>Event: <%= @race_event.date %></p>
-    <p>Type: <%= @race_event.race_type.name %></p>
+    <p>Type: <%= @race_event.race_type.race_type %></p>
     <% @race_event.races.each do |r| %>
         <p><%= r.name %></p>
+        <p>Women? <%= r.women %></p>
+        <p>Min Age <%= r.min_age%></p>
+        <p>Max Age <%= r.max_age %></p>
+        <p>Class <%= r.racing_class %></p>
+        <p>Highest_category <%= r.max_category %></p>
+        <p>Lowest Category <%= r.min_category %></p>
+        <p>Entry Fee <%= r.entry_fee %></p>
+        <p>Starting Number <%= r.starting_number %></p>
+        <p>Next Number <%= r.next_number %></p>
+        <p>Field Limit <%= r.field_limit %></p>
+        <p><%= link_to 'Start List', entries_path(:race => r) %></p><br/>
     <% end %>
 <%= link_to 'Edit', edit_race_event_path(@race_event) %> |
 <%= link_to 'Back', race_events_path %>

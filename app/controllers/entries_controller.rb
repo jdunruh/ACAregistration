@@ -2,7 +2,11 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all
+    if[params[:race]]
+      @entries = Entry.where("race_id = ?", params[:race])
+    else
+      @entries = Entry.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,12 +1,12 @@
 class Race < ActiveRecord::Base
-  attr_accessible :entry_fee, :max_age, :max_category, :min_age, :min_category, :race_event_id, :women, :all_categories, :name, :juniors, :seniors, :u23, :youth, :masters
+  attr_accessible :entry_fee, :max_age, :max_category, :min_age, :min_category, :race_event_id, :women, :all_categories, :name, :juniors, :seniors, :u23, :youth, :masters, :racing_class, :starting_number, :field_limit
   belongs_to :race_event
   has_many :entries
   has_many :rider_registrations, :through => :entries
-  validates :entry_fee, :max_age, :max_category, :min_age, :min_category, :women, :name, :presence => true
+  validates :entry_fee, :max_age, :max_category, :min_age, :min_category, :name, :presence => true
   validates :max_age, :min_age, :numericality => { :only_integer => true }
   validates :min_category, :max_category, :numericality => {:only_integer => true, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 6}
-  validates :entry_fee, :numericality => true, :format => {with => "(\d+)|(\d*\.\d{2})"}
+  validates :entry_fee, :numericality => true, :format => {:with => /(\d+)|(\d*\.\d{2})/}
 
   def race_eligible?(rider) #rider eligibility for race
     rider_category = eval("rider.#{self.race_event.race_type.race_type_column}")
@@ -66,7 +66,7 @@ class Race < ActiveRecord::Base
       end
   end
 
-  def raicng_class=(cl)
+  def racing_class=(cl)
     case cl
       when 'Masters'
         self.masters=true
@@ -83,7 +83,7 @@ class Race < ActiveRecord::Base
   end
 
   def self.racing_classes
-    %w(Masters Senior Juniors U23 Youth)
+    %w(Masters Seniors Juniors U23 Youth)
   end
 
   def racing_class
