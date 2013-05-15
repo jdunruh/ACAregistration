@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-    <p>Event: <%= @race_event.date %></p>
+    <p>Event: <%= @race_event.name %>   </p>
+    <p>Date: <%= @race_event.date %></p>
     <p>Type: <%= @race_event.race_type.race_type %></p>
     <% @race_event.races.each do |r| %>
         <p><%= r.name %></p>
