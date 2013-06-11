@@ -192,6 +192,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner

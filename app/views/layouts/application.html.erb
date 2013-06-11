@@ -1,27 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <% if content_for?(:head) %>
-    <%= content_for(:head) %>
-  <% else %>
-    <title>ACA Registration</title>
-  <% end %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<ul class=main_menu>
-  <li><%= link_to "Register Riders", new_rider_registration_path %></li>
-  <li><%= link_to "Upload USAC Database", riders_upload_file_path %></li>
-  <li><%= link_to "Upload ACA Database", aca_data_upload_file_path %></li>
-  <li><%= link_to "List Events", race_events_path %></li>
-  <li><%= link_to "Add Races", new_race_event_path %></li>
-</ul>
-
-<%= yield %>
-
-</body>
-</html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Myapp" %></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render 'layouts/navigation' %>
+        </div>
+      </nav>
+    </header>
+    <div id="main" role="main">
+      <div class="container">
+        <div class="content">
+           <div class="row">
+            <div class="span12">
+              <%= render partial: "shared/flash_messages", flash: flash %>
+              <%= yield %>
+            </div>
+          </div>
+          <footer>
+          </footer>
+        </div>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
+  </body>
+</html><!DOCTYPE html>
