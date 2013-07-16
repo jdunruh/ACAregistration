@@ -1,12 +1,10 @@
-<h1>Listing entries</h1>
+<h1>Race Entries</h1>
 
-<table>
+<table border="1">
   <tr>
-    <th>Rider</th>
-    <th></th>
+    <th>First</th>
+    <th>Last</th>
     <th>License Number</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -15,12 +13,11 @@
     <td><%= entry.rider_registration.rider.first_name %></td>
     <td><%= entry.rider_registration.rider.last_name %></td>
     <td><%= entry.rider_registration.rider.license_number %></td>
-
-    <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Entry', new_entry_path %>
+<%= link_to 'New Entry', new_entry_path, class: "btn" %>
