@@ -13,15 +13,13 @@
     <li>
     <%= link_to('Edit account', edit_user_registration_path) %>
     </li>
-      <li><%= link_to "Register Riders", new_rider_registration_path %></li>
-      <li><%= link_to "Upload USAC Database", riders_upload_file_path %></li>
-      <li><%= link_to "Upload ACA Database", aca_data_upload_file_path %></li>
-      <li><%= link_to "List Events", race_events_path %></li>
-      <li><%= link_to "Add Races", new_race_event_path %></li>
-
   <% else %>
     <li>
     <%= link_to('Sign up', new_user_registration_path)  %>
     </li>
   <% end %>
+  <li><%= link_to "Register Riders", new_rider_registration_path %></li>
+  <li><%= link_to "Upload USAC Database", riders_upload_file_path %></li>
+  <li><%= link_to "Upload ACA Database", aca_data_upload_file_path %></li>
+  <li><%= link_to "List Events", race_events_path %></li>
 </ul>

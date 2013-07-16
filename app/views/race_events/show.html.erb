@@ -1,21 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-    <p>Event: <%= @race_event.name %>   </p>
-    <p>Date: <%= @race_event.date %></p>
-    <p>Type: <%= @race_event.race_type.race_type %></p>
-    <% @race_event.races.each do |r| %>
-        <p><%= r.name %></p>
-        <p>Women? <%= r.women %></p>
-        <p>Min Age <%= r.min_age%></p>
-        <p>Max Age <%= r.max_age %></p>
-        <p>Class <%= r.racing_class %></p>
-        <p>Highest_category <%= r.max_category %></p>
-        <p>Lowest Category <%= r.min_category %></p>
-        <p>Entry Fee <%= r.entry_fee %></p>
-        <p>Starting Number <%= r.starting_number %></p>
-        <p>Next Number <%= r.next_number %></p>
-        <p>Field Limit <%= r.field_limit %></p>
-        <p><%= link_to 'Start List', entries_path(:race => r) %></p><br/>
-    <% end %>
+    <h2>Event: <%= @race_event.name %>  on  <%= @race_event.date %> </h2>
+    <h3>Type: <%= @race_event.race_type.race_type %></h3>
+    <table border="1">
+      <tr>
+        <th>Race</th>
+        <th>Women?</th>
+        <th>Min Age</th>
+        <th>Max Age</th>
+        <th>Class</th>
+        <th>Highest Cat</th>
+        <th>Lowest Cat</th>
+        <th>Entry Fee</th>
+        <th>Field Limit</th>
+        <th>Start Number</th>
+        <th>Next Number</th>
+        <th></th>
+      </tr>
+        <% @race_event.races.each do |r| %>
+          <tr>
+            <td><%= r.name %></td>
+            <td><%= r.women %></td>
+            <td><%= r.min_age%></td>
+            <td><%= r.max_age %></td>
+            <td><%= r.racing_class %></td>
+            <td><%= r.max_category %></td>
+            <td><%= r.min_category %></td>
+            <td><%= r.entry_fee %></td>
+            <td><%= r.field_limit %></td>
+            <td><%= r.starting_number %></td>
+            <td><%= r.next_number %></td>
+            <td><%= link_to 'Start List', entries_path(:race => r), class: "btn" %></td>
+          </tr>
+        <% end %>
+       </tr>
+    </table>
 <%= link_to 'Edit', edit_race_event_path(@race_event) %> |
 <%= link_to 'Back', race_events_path %>
