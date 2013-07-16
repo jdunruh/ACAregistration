@@ -1,11 +1,13 @@
-<%= f.input :min_age %>
-<%= f.input :max_age %>
-<%= f.input :entry_fee %>
-<%= f.input :min_category %>
-<%= f.input :max_category %>
-<%= f.input :name %>
-<%= f.input :women %>
-<%= f.input :racing_class, :collection => Race.racing_classes, :include_blank => false %>
-<%= f.input :starting_number %>
-<%= f.input :field_limit %>
-<%= f.link_to_remove "Remove this race" %>
+<%= field_set_tag legend="race data" do %>
+    <%= f.input :name %>
+    <%= f.input :min_age %>
+    <%= f.input :max_age %>
+    <%= f.input :entry_fee %>
+    <%= f.input :min_category %>
+    <%= f.input :max_category %>
+    <%= f.input :women %>
+    <%= f.input :racing_class, :collection => Race.racing_classes, :include_blank => false %>
+    <%= f.input :starting_number %>
+    <%= f.input :field_limit %>
+    <%= f.link_to_remove "Remove this race", class: "btn" %> <br><br>
+<% end %>

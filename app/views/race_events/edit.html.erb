@@ -18,8 +18,8 @@
     <%= f.input :date %>
     <%= f.association :race_type, :label_method => :race_type, :value_method => :id, :include_blank => false %>
     <%= f.simple_fields_for :races %>
-    <%= f.link_to_add "Add a race", :races %>
-    <%= f.submit 'Update Event' %>
+    <%= f.link_to_add "Add a race", :races, class: "btn" %> &nbsp;&nbsp;
+    <%= f.submit 'Update Event', class: "btn" %>
     <% end %>
 
 
